@@ -18,14 +18,20 @@ dependencies {
 
 #### Request Permissions
 ```
-  request(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-     Toast.makeText(MainActivity.this, it ? "获得权限" : "权限拒绝", Toast.LENGTH_SHORT).show();
-  }
+   ResultHelper.request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+      if(it){
+          //TODO Permission Granted
+      }else{
+
+      }
+
+   }
+
 ```
 
 #### startActivityForResult
 ```
- startForResult(intent) { resultCode, data ->
-    //TODO
- }
+  ResultHelper.startActivity(Intent()) { resultCode, data ->
+       //TODO Activity Result
+  }
 ```

@@ -13,14 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
+        //请求权限
         ResultHelper.request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
 
 
         }
 
-        val intent = Intent()
-        ResultHelper.startActivity(intent) { code, data ->
+        //Activity for Result
+        ResultHelper.startActivity(Intent()) { code, data ->
 
         }
     }
