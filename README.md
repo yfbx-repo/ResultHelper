@@ -1,7 +1,7 @@
 # ResultHelper
 
 从博客中学到的点，并进行实践：
-1.使用Fragment作为路由 进行权限请求 以及ActivityResult返回逻辑处理.
+1.使用Fragment作为路由 进行权限请求 以及ActivityResult返回逻辑处理
 2.使用ContentProvider 获取Application 上下文
 3.使用LifeCycleCallback监听Activity生命周期，从而获得栈顶Activity
 
