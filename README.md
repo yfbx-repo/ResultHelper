@@ -14,17 +14,17 @@ Activity引用，这样的话，就没有必要使用ContentProvider和LifeCycle
 
 ```
 
-        //申请权限
-        request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
-            if (it) {
-                //TODO
-            }
-        }
+   //申请权限
+   request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+       if (it) {
+           //TODO
+       }
+   }
 
-        //Activity for Result
-        startForResult(Intent()) { code, data ->
-            //TODO
-        }
+   //Activity for Result
+   startForResult(Intent()) { code, data ->
+       //TODO
+   }
 
 
 ```
