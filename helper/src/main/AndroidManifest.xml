@@ -1,2 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.yfbx.helper"/>
+    package="com.yfbx.helper">
+
+    <application>
+
+        <provider
+            android:name=".ResultContextProvider"
+            android:authorities="${applicationId].provider"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>
