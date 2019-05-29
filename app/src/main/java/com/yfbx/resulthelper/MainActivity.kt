@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.yfbx.helper.ResultHelper
+import com.yfbx.helper.request
+import com.yfbx.helper.startForResult
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +24,19 @@ class MainActivity : AppCompatActivity() {
         //Activity for Result
         ResultHelper.startActivity(Intent()) { code, data ->
 
+        }
+
+
+        //申请权限
+        request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+            if (it) {
+                //TODO
+            }
+        }
+
+        //Activity for Result
+        startForResult(Intent()) { code, data ->
+            //TODO
         }
     }
 
