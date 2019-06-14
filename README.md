@@ -1,5 +1,8 @@
 # ResultHelper
 
+[![](https://img.shields.io/badge/release-1.0.0-blue.svg)](https://github.com/whimling/ResultHelper/releases)
+
+
 从博客中学到的点，并进行实践：    
 1.使用Fragment作为路由 进行权限请求 以及ActivityResult返回逻辑处理    
 2.使用ContentProvider 获取Application 上下文    
