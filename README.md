@@ -45,7 +45,7 @@ repositories {
 
 ```
 dependencies {
-	implementation 'com.github.Edward-yfbx:ResultHelper:1.0.0'
+	implementation 'com.github.yfbx:ResultHelper:1.0.0'
 }
 ```
 
