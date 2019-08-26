@@ -1,10 +1,10 @@
 package com.yfbx.helper
 
-import android.annotation.TargetApi
 import android.content.Intent
-import android.os.Build
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 
 /**
  * @Author Edward
@@ -42,10 +42,24 @@ class ForResultFragment : Fragment() {
 
 
     /**
+     * 是否有权限
+     */
+    private fun isGranted(permissions: Array<String>): Boolean {
+        val checkResult = permissions.map { ActivityCompat.checkSelfPermission(context!!, it) }
+        return !checkResult.contains(PackageManager.PERMISSION_DENIED)
+    }
+
+    /**
      * 请求权限
      */
-    @TargetApi(Build.VERSION_CODES.M)
     fun getPermissions(permissions: Array<String>, listener: (Boolean) -> Unit) {
+        //已有权限
+        if (isGranted(permissions)) {
+            listener.invoke(true)
+            return
+        }
+
+        //申请权限
         val requestCode = permissionMap.size + 1
         permissionMap[requestCode] = listener
         requestPermissions(permissions, requestCode)
@@ -56,7 +70,7 @@ class ForResultFragment : Fragment() {
      */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         val listener = permissionMap.remove(requestCode)
-        val isGrant = grantResults.isNotEmpty() && !grantResults.contains(-1)
+        val isGrant = !grantResults.contains(PackageManager.PERMISSION_DENIED)
         listener?.invoke(isGrant)
     }
 }

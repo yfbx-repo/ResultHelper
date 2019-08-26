@@ -1,10 +1,10 @@
 package com.yfbx.resulthelper
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.yfbx.helper.ResultHelper
+import androidx.appcompat.app.AppCompatActivity
 import com.yfbx.helper.request
 import com.yfbx.helper.startForResult
 
@@ -14,29 +14,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        //请求权限
-        ResultHelper.request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
-
-
-        }
-
-        //Activity for Result
-        ResultHelper.startActivity(Intent()) { code, data ->
-
-        }
-
-
         //申请权限
         request(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
             if (it) {
-                //TODO
+                //获得权限
             }
         }
 
         //Activity for Result
         startForResult(Intent()) { code, data ->
-            //TODO
+            if (code == Activity.RESULT_OK && data != null) {
+                //返回结果处理
+            }
         }
     }
 
