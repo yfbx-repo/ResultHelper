@@ -1,5 +1,5 @@
 # ResultHelper
-
+[![](https://img.shields.io/badge/release-1.0.2-blue.svg)](https://github.com/yfbx/ResultHelper/releases)     
 To request permission and startActivityForResult with a Fragment without UI
 
 #### Add the dependency
