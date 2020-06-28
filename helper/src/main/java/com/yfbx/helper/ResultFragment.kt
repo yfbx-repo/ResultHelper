@@ -1,4 +1,4 @@
-package com.yfbx.helper.helper
+package com.yfbx.helper
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -61,7 +61,8 @@ class ResultFragment private constructor() : Fragment() {
      * 是否有权限
      */
     private fun isGranted(vararg permissions: String): Boolean {
-        val checkResult = permissions.map { ActivityCompat.checkSelfPermission(requireContext(), it) }
+        val checkResult =
+                permissions.map { ActivityCompat.checkSelfPermission(requireContext(), it) }
         return !checkResult.contains(PackageManager.PERMISSION_DENIED)
     }
 
@@ -84,7 +85,11 @@ class ResultFragment private constructor() : Fragment() {
     /**
      * 权限返回
      */
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+    ) {
         val listener = permissionMap.remove(requestCode)
         val isGrant = !grantResults.contains(PackageManager.PERMISSION_DENIED)
         listener?.invoke(isGrant)

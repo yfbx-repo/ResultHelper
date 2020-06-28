@@ -1,18 +1,13 @@
-@file:Suppress("unused")
-
 package com.yfbx.helper
 
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.yfbx.helper.helper.ResultFragment
-import com.yfbx.helper.helper.fillArgs
 
 /**
  * @Author Edward
  * @Date 2019/4/3
  */
-
 
 /**
  * Start Activity for result with args.
