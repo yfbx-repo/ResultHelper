@@ -8,7 +8,6 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import com.yfbx.helper.helper.fillArgs
 
 /**
  * Author: Edward
@@ -40,14 +39,14 @@ fun ComponentActivity.launchFor(intent: Intent, callback: (ActivityResult) -> Un
 /**
  * Request permission
  */
-fun ComponentActivity.getPermission(permission: String, callback: (isGrant: Boolean) -> Unit) {
+fun ComponentActivity.launchFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
 }
 
 /**
  * Request permissions
  */
-fun ComponentActivity.getPermissions(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
+fun ComponentActivity.launchFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
 }
 
@@ -64,10 +63,10 @@ fun Fragment.launchFor(intent: Intent, callback: (ActivityResult) -> Unit) {
     registerForActivityResult(ActivityResultContracts.StartActivityForResult(), ActivityResultCallback(callback)).launch(intent)
 }
 
-fun Fragment.getPermission(permission: String, callback: (isGrant: Boolean) -> Unit) {
+fun Fragment.launchFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
 }
 
-fun Fragment.getPermissions(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
+fun Fragment.launchFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
 }

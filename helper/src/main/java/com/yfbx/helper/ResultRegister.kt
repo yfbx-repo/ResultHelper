@@ -1,4 +1,4 @@
-package com.yfbx.helper.helper
+package com.yfbx.helper
 
 import android.app.Activity
 import android.content.Intent
@@ -24,7 +24,7 @@ import java.util.*
  */
 class ResultRegister(private val activity: Activity) : ActivityResultRegistry() {
 
-    override fun <I, O> invoke(requestCode: Int, contract: ActivityResultContract<I, O>, input: I, options: ActivityOptionsCompat?) {
+    override fun <I : Any?, O : Any?> onLaunch(requestCode: Int, contract: ActivityResultContract<I, O>, input: I, options: ActivityOptionsCompat?) {
         // Immediate result path
         val synchronousResult = contract.getSynchronousResult(activity, input)
         if (synchronousResult != null) {
@@ -78,11 +78,7 @@ class ResultRegister(private val activity: Activity) : ActivityResultRegistry() 
         }
     }
 
-    private fun sendActivityForResult(
-            requestCode: Int,
-            intent: Intent,
-            options: ActivityOptionsCompat?
-    ) {
+    private fun sendActivityForResult(requestCode: Int, intent: Intent, options: ActivityOptionsCompat?) {
         var optionsBundle: Bundle? = null
         if (intent.hasExtra(ActivityResultContracts.StartActivityForResult.EXTRA_ACTIVITY_OPTIONS_BUNDLE)) {
             optionsBundle =
