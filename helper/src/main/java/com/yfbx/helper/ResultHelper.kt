@@ -37,20 +37,8 @@ fun ComponentActivity.launchFor(intent: Intent, callback: (ActivityResult) -> Un
 }
 
 /**
- * Request permission
+ * Fragment
  */
-fun ComponentActivity.launchFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
-}
-
-/**
- * Request permissions
- */
-fun ComponentActivity.launchFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
-}
-
-
 inline fun <reified T> Fragment.launchFor(vararg param: Pair<String, Any?>, noinline callback: (ActivityResult) -> Unit) {
     launchFor(Intent(context, T::class.java).fillArgs(param), callback)
 }
@@ -61,12 +49,4 @@ inline fun <reified T> Fragment.launchFor(noinline callback: (ActivityResult) ->
 
 fun Fragment.launchFor(intent: Intent, callback: (ActivityResult) -> Unit) {
     registerForActivityResult(ActivityResultContracts.StartActivityForResult(), ActivityResultCallback(callback)).launch(intent)
-}
-
-fun Fragment.launchFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
-}
-
-fun Fragment.launchFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
 }

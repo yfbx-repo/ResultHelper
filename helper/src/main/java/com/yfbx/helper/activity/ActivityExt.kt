@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.yfbx.helper
+package com.yfbx.helper.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,8 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts.*
+import com.yfbx.helper.ResultRegister
+import com.yfbx.helper.fillArgs
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -26,21 +28,21 @@ private val nextLocalRequestCode = AtomicInteger()
 /**
  * Start Activity for result with args.
  */
-inline fun <reified T> Activity.launchFor(vararg param: Pair<String, Any?>, noinline callback: (ActivityResult) -> Unit) {
-    launchFor(Intent(this, T::class.java).fillArgs(param), callback)
+inline fun <reified T> Activity.startFor(vararg param: Pair<String, Any?>, noinline callback: (ActivityResult) -> Unit) {
+    startFor(Intent(this, T::class.java).fillArgs(param), callback)
 }
 
 /**
  * Start Activity for result simply with target Activity(without args.)
  */
-inline fun <reified T> Activity.launchFor(noinline callback: (ActivityResult) -> Unit) {
-    launchFor(Intent(this, T::class.java), callback)
+inline fun <reified T> Activity.startFor(noinline callback: (ActivityResult) -> Unit) {
+    startFor(Intent(this, T::class.java), callback)
 }
 
 /**
  *  Start Activity for result with Intent
  */
-fun Activity.launchFor(intent: Intent, callback: (ActivityResult) -> Unit) {
+fun Activity.startFor(intent: Intent, callback: (ActivityResult) -> Unit) {
     registerForActivityResult(StartActivityForResult(), callback).launch(intent)
 }
 
@@ -55,7 +57,7 @@ fun Activity.getPermission(permission: String, callback: (isGrant: Boolean) -> U
 /**
  * Request permissions
  */
-fun Activity.getPermissions(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
+fun Activity.getPermission(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
     registerForActivityResult(RequestMultiplePermissions(), callback).launch(permission)
 }
 
