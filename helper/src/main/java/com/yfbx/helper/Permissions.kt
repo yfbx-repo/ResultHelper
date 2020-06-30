@@ -10,19 +10,19 @@ import androidx.fragment.app.Fragment
  * Description:Request permissions
  */
 
-fun ComponentActivity.request(permission: String, callback: (isGrant: Boolean) -> Unit) {
+fun ComponentActivity.permitFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
 }
 
-fun ComponentActivity.request(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
+fun ComponentActivity.permitsFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
 }
 
-fun Fragment.request(permission: String, callback: (isGrant: Boolean) -> Unit) {
+fun Fragment.permitFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
 }
 
-fun Fragment.request(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
+fun Fragment.permitsFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
     registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
 }
 

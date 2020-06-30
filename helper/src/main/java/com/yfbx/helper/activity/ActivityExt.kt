@@ -9,7 +9,6 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts.*
-import com.yfbx.helper.ResultRegister
 import com.yfbx.helper.fillArgs
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -57,7 +56,7 @@ fun Activity.getPermission(permission: String, callback: (isGrant: Boolean) -> U
 /**
  * Request permissions
  */
-fun Activity.getPermission(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
+fun Activity.getPermissions(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
     registerForActivityResult(RequestMultiplePermissions(), callback).launch(permission)
 }
 

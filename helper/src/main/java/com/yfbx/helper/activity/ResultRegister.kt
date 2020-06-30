@@ -1,4 +1,4 @@
-package com.yfbx.helper
+package com.yfbx.helper.activity
 
 import android.app.Activity
 import android.content.Intent

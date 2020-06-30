@@ -4,7 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.yfbx.helper.launchFor
-import com.yfbx.helper.request
+import com.yfbx.helper.permitFor
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +18,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //requestPermission
-        request(Manifest.permission.WRITE_EXTERNAL_STORAGE) { isGrant: Boolean ->
-            if (isGrant) {
-                //TODO:
-            }
+        permitFor(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+
 
         }
 
