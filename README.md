@@ -1,28 +1,27 @@
 # ResultHelper
 [![](https://img.shields.io/badge/release-2.0.1-blue.svg)](https://github.com/yfbx-repo/ResultHelper/releases)   
 
-extensions to start activity for result and request permissions,besed on:
-```
-'androidx.activity:activity-ktx:1.2.0-alpha06'
-'androidx.fragment:fragment-ktx:1.3.0-alpha06'
-```
+use a Fragment as the router to handler the activity result and permission result
 
 ### 1. dependencies
-
 ```
 dependencies {
-    implementation 'com.github.yfbx:ResultHelper:2.0.1-ktx'
+    implementation 'com.github.yfbx:ResultHelper:2.0.1'
 }
 ```    
 
-### 2. sample
+### 2. sample 
 
 ```
-launchFor<TestActivity>(params) {
-    //todo
+startForResult(Intent()) { code, data ->
+    if (code == Activity.RESULT_OK && data != null) {
+       //todo
+     }
 }
 
-permitFor(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
-    //todo
+request(Manifest.permission.WRITE_EXTERNAL_STORAGE) { isGrant ->
+    if (isGrant) {
+         //todo
+    }
 }
 ```
