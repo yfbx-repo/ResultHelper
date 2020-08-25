@@ -1,28 +1,21 @@
 package com.yfbx.helper
 
-import androidx.activity.ComponentActivity
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 /**
  * Author: Edward
  * Date: 2020-06-28
  * Description:Request permissions
  */
-
-fun ComponentActivity.permitFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
+fun FragmentActivity.request(vararg permissions: String, listener: (isGrant: Boolean) -> Unit) {
+    ResultFragment.get(this).getPermissions(*permissions) {
+        listener.invoke(it)
+    }
 }
 
-fun ComponentActivity.permitsFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
+fun Fragment.request(vararg permissions: String, listener: (isGrant: Boolean) -> Unit) {
+    requireActivity().request(*permissions) {
+        listener.invoke(it)
+    }
 }
-
-fun Fragment.permitFor(permission: String, callback: (isGrant: Boolean) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestPermission(), callback).launch(permission)
-}
-
-fun Fragment.permitsFor(vararg permission: String, callback: (Map<String, Boolean>) -> Unit) {
-    registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions(), callback).launch(permission)
-}
-
