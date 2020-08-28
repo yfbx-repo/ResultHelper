@@ -6,7 +6,7 @@ use a Fragment as the router to handler the activity result and permission resul
 ### dependencies
 ```
 dependencies {
-    implementation 'com.github.yfbx:ResultHelper:2.0.2'
+    implementation 'com.github.yfbx-repo:ResultHelper:2.0.2'
 }
 ```    
 
