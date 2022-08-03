@@ -1,4 +1,4 @@
-# ResultHelper
+# [Deprecated] ResultHelper
 [![License](https://img.shields.io/badge/license-GPL%203.0-4EB1BA.svg)](https://fossa.com/blog/open-source-software-licenses-101-gpl-v3)
 [![](https://img.shields.io/badge/release-2.0.2-blue.svg)](https://github.com/yfbx-repo/ResultHelper/releases)
 
